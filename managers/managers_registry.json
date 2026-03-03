@@ -1,0 +1,82 @@
+{
+  "registry_version": "1.0.0",
+  "repo": "FORGE",
+  "last_updated": "2026-03-03T03:18:00Z",
+  "managers": [
+    {
+      "manager_id": "daemon_manager",
+      "name": "DaemonManager",
+      "type": "daemon_orchestration",
+      "entry_point": "managers/daemon_manager.py",
+      "confidence": 0.95,
+      "description": "Manages build, test, and deployment daemons",
+      "daemons": [
+        {
+          "daemon_id": "build",
+          "name": "BuildDaemon",
+          "interval": 120,
+          "description": "Build projects in background (2min)"
+        },
+        {
+          "daemon_id": "test_runner",
+          "name": "TestRunnerDaemon",
+          "interval": 180,
+          "description": "Run tests in background (3min)"
+        },
+        {
+          "daemon_id": "deployment",
+          "name": "DeploymentDaemon",
+          "interval": 300,
+          "description": "Deploy services in background (5min)"
+        }
+      ]
+    },
+    {
+      "manager_id": "skill_manager",
+      "name": "SkillManager",
+      "type": "skill_orchestration",
+      "entry_point": "managers/skill_manager.py",
+      "confidence": 0.95,
+      "description": "Orchestrates build, test, and deployment skills",
+      "features": [
+        "skill_execution",
+        "skill_registry",
+        "skill_validation"
+      ]
+    },
+    {
+      "manager_id": "pipeline_orchestrator",
+      "name": "PipelineOrchestrator",
+      "type": "pipeline_management",
+      "entry_point": "managers/pipeline_orchestrator.py",
+      "confidence": 0.94,
+      "description": "Multi-stage CI/CD pipeline orchestration",
+      "features": [
+        "pipeline_creation",
+        "stage_execution",
+        "sequential_execution",
+        "failure_handling"
+      ]
+    },
+    {
+      "manager_id": "artifact_manager",
+      "name": "ArtifactManager",
+      "type": "artifact_management",
+      "entry_point": "managers/artifact_manager.py",
+      "confidence": 0.93,
+      "description": "Build artifacts storage and caching",
+      "features": [
+        "artifact_storage",
+        "artifact_retrieval",
+        "metadata_tracking",
+        "artifact_caching"
+      ]
+    }
+  ],
+  "dependencies": {
+    "internal": ["DevTools"],
+    "external": ["docker", "kubernetes", "pytest", "jest"]
+  },
+  "total_managers": 4,
+  "total_daemons": 3
+}

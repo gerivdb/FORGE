@@ -1,0 +1,49 @@
+{
+  "registry_version": "1.0.0",
+  "repo": "FORGE",
+  "last_updated": "2026-03-03T03:18:00Z",
+  "skills": [
+    {
+      "skill_id": "build_project",
+      "name": "Build Project",
+      "category": "ci_build",
+      "entry_point": "skills/build_project.py",
+      "description": "Build projects (Docker, npm, Python, Go)",
+      "parameters": {
+        "project_name": "str",
+        "build_type": "str",
+        "config": "Dict[str, Any]"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.95
+    },
+    {
+      "skill_id": "run_tests",
+      "name": "Run Tests",
+      "category": "ci_test",
+      "entry_point": "skills/run_tests.py",
+      "description": "Execute test suites (pytest, jest, go test)",
+      "parameters": {
+        "project_name": "str",
+        "test_suite": "str"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.94
+    },
+    {
+      "skill_id": "deploy_service",
+      "name": "Deploy Service",
+      "category": "cd_deploy",
+      "entry_point": "skills/deploy_service.py",
+      "description": "Deploy to environments (staging, production)",
+      "parameters": {
+        "service_name": "str",
+        "environment": "str",
+        "image_tag": "str"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.93
+    }
+  ],
+  "total_skills": 3
+}
